@@ -1,37 +1,24 @@
-import '/src/assets/bootstrap/bootstrap.min.css';
+import "/src/assets/bootstrap/bootstrap-latest.min.css";
+import "/src/assets/bootstrap/bootstrap-custom.min.css";
 import "./App.css";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import BsButton from "react-bootstrap/Button";
-import NavbarBrand from "react-bootstrap/NavbarBrand";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
-import NavLink from "react-bootstrap/NavLink";
+import WoafNavbar from "./components/WoafNavbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <header>
-        <Navbar
-          expand="lg"
-          variant="dark"
-          bg="dark"
-          className="d-flex justify-content-between px-4"
-        >
-          <NavbarBrand href="#">
-            <h3 className='m-0 p-0'>WOAF</h3>
-          </NavbarBrand>
-          <Navbar.Toggle aria-controls="navbar-nav" />
-          <NavbarCollapse id="navbar-nav" className="flex-grow-0">
-            <Nav>
-              <NavLink>Home</NavLink>
-              <NavLink>Home</NavLink>
-              <NavLink>Home</NavLink>
-            </Nav>
-          </NavbarCollapse>
-        </Navbar>
-      </header>
-    </>
+    <BrowserRouter>
+      <main className="container-fluid p-0 vh-100 d-flex flex-column">
+        <WoafNavbar></WoafNavbar>
+        <Routes>
+          <Route path="/bit02spa">
+            <Route index element={<Home />} />
+            <Route path="Login" element={<Login />} />
+          </Route>
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
 }
 
