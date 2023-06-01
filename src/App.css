@@ -1,16 +1,87 @@
-.span-link {
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+#root {
+  height: max(fit-content, 100vh);
+}
+
+.clickable-item {
   cursor: pointer;
   user-select: none;
 }
 
-a.nav-router-link,
-a.nav-router-link:visited,
-a.nav-router-link:hover,
-a.nav-router-link:active {
-  color: inherit;
-  text-decoration: none;
+.font-opensans {
+  font-family: "Open Sans", sans-serif;
+}
+
+.font-raleway {
+  font-family: "Raleway", sans-serif;
+}
+
+.justify-self-center {
+  justify-self: center;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.horizontal-flip {
+  transform: scaleX(-1);
+}
+
+.z-last {
+  z-index: 12;
+}
+
+/* Home Page */
+
+.page-container:has(.card-container) {
+  height: 100% !important;
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 360px;
+}
+
+.cart-card {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 400px;
+}
+
+.card-container {
+  padding: 0 20%;
+}
+
+.tag-badge {
+  font-size: 0.6rem;
+}
+
+/* Cart Page */
+.cart {
+  margin-top: 1rem;
+  padding-bottom: 7rem;
+}
+
+.quantity-selector {
+  width: 120px;
+}
+
+.quantity-count {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Login Page */
+
+.login-card {
+  height: 468px;
 }
 
 .login-card-image {
-  object-position: bottom;
+  object-position: center 94%;
 }

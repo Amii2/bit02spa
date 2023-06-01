@@ -4,40 +4,73 @@ import NavbarBrand from "react-bootstrap/NavbarBrand";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavLink from "react-bootstrap/NavLink";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
+import { AppContext } from "../assets/utils/AppContext";
+import { CartContext } from "../assets/utils/CartContext";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useContext, useEffect } from "react";
 
 export default function WoafNavbar() {
+  const navigateFunction = useNavigate();
+  const location = useLocation();
+  const { cartItems } = useContext(CartContext);
+  const { addAppContext, removeAppContext } = useContext(AppContext);
+
+  const navigate = (route) => {
+    if (location.pathname === "/bit02spa")
+      localStorage.setItem("scrollPosition", window.scrollY);
+
+    navigateFunction(route);
+
+    if (route === "/bit02spa") {
+      const scrollPosition = localStorage.getItem("scrollPosition");
+      window.scrollTo({ top: scrollPosition || 0, behavior: "instant" });
+    } else if (route !== "/bit02spa/login")
+      window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
   return (
     <Navbar
       expand="lg"
       variant="dark"
       bg="dark"
-      className="d-flex justify-content-between px-4"
+      className="d-flex justify-content-between px-5 sticky-top"
     >
-      <NavbarBrand as="span" href="#" className="span-link">
-        <Link to="/bit02spa" className="nav-router-link">
-          <h3 className="m-0 p-0">WOAF</h3>
-        </Link>
+      <NavbarBrand
+        onClick={() => navigate("/bit02spa")}
+        className="clickable-item"
+      >
+        <h1 className="m-0 p-0 h3 font-raleway fw-bold">WOAF</h1>
       </NavbarBrand>
       <Navbar.Toggle aria-controls="navbar-nav" />
       <NavbarCollapse id="navbar-nav" className="flex-grow-0">
         <Nav>
-          <Link
-            to="/bit02spa/Login"
-            className="nav-router-link flex-grow-0 align-self-center order-lg-last ms-lg-4 align-self-lg-auto"
+          <Button
+            onClick={() => navigate("/bit02spa/login")}
+            className="font-raleway px-5 my-4 px-lg-4 my-lg-0 flex-grow-0 align-self-center order-lg-last ms-lg-4 align-self-lg-auto"
           >
-            <Button className="px-5 my-4 px-lg-4 my-lg-0">Ingresar</Button>
-          </Link>
-          <Link to="/bit02spa" className="nav-router-link">
-            <NavLink as="span" className="span-link">
-              Inicio
-            </NavLink>
-          </Link>
-          <Link to="/bit02spa#Products" className="nav-router-link">
-            <NavLink as="span" className="span-link">
-              Productos
-            </NavLink>
-          </Link>
+            Ingresar
+          </Button>
+          <NavLink
+            onClick={() => navigate("/bit02spa")}
+            className="font-raleway"
+          >
+            Inicio
+          </NavLink>
+          <NavLink
+            onClick={() => navigate("/bit02spa/cart")}
+            className="position-relative font-raleway"
+          >
+            <span className="material-symbols-outlined">shopping_cart</span>
+            <div className="position-relative w-100 h-100 bottom-100 end-0 ">
+              <Badge
+                bg="secondary"
+                className="rounded-circle position-absolute start-100 badge bg-secondary translate-middle"
+              >
+                {cartItems.length}
+              </Badge>
+            </div>
+          </NavLink>
         </Nav>
       </NavbarCollapse>
     </Navbar>
