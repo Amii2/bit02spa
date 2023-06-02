@@ -5,16 +5,14 @@ import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavLink from "react-bootstrap/NavLink";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
-import { AppContext } from "../assets/utils/AppContext";
 import { CartContext } from "../assets/utils/CartContext";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export default function WoafNavbar() {
   const navigateFunction = useNavigate();
   const location = useLocation();
   const { cartItems } = useContext(CartContext);
-  const { addAppContext, removeAppContext } = useContext(AppContext);
 
   const navigate = (route) => {
     if (location.pathname === "/bit02spa")
@@ -24,9 +22,11 @@ export default function WoafNavbar() {
 
     if (route === "/bit02spa") {
       const scrollPosition = localStorage.getItem("scrollPosition");
-      window.scrollTo({ top: scrollPosition || 0, behavior: "instant" });
-    } else if (route !== "/bit02spa/login")
-      window.scrollTo({ top: 0, behavior: "instant" });
+      setTimeout(
+        () => window.scrollTo({ top: scrollPosition, behavior: "instant" }),
+        0
+      );
+    } else window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   return (
@@ -47,7 +47,7 @@ export default function WoafNavbar() {
         <Nav>
           <Button
             onClick={() => navigate("/bit02spa/login")}
-            className="font-raleway px-5 my-4 px-lg-4 my-lg-0 flex-grow-0 align-self-center order-lg-last ms-lg-4 align-self-lg-auto"
+            className="font-raleway fw-600 px-5 my-4 px-lg-4 my-lg-0 flex-grow-0 align-self-center order-lg-last ms-lg-4 align-self-lg-auto"
           >
             Ingresar
           </Button>
@@ -65,7 +65,7 @@ export default function WoafNavbar() {
             <div className="position-relative w-100 h-100 bottom-100 end-0 ">
               <Badge
                 bg="secondary"
-                className="rounded-circle position-absolute start-100 badge bg-secondary translate-middle"
+                className="font-opensans fw-bold rounded-circle position-absolute start-100 badge bg-secondary translate-middle"
               >
                 {cartItems.length}
               </Badge>

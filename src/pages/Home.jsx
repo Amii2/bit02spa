@@ -12,7 +12,11 @@ export default function Home() {
   ));
 
   return (
-    <Row className="w-100 pt-3 pb-5 justify-content-center gap-3 card-container">
+    <Row
+      className="w-100 pt-3 pb-5 justify-content-center gap-3 card-container"
+      id="home"
+    >
+      <h2 className="font-raleway text-center fw-600">¡Bienvenid@ a Woaf!</h2>
       {productElements}
     </Row>
   );

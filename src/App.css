@@ -3,7 +3,11 @@ body {
 }
 
 #root {
-  height: max(fit-content, 100vh);
+  height: 100%;
+}
+
+#root:has(#login) {
+  height: 100vh;
 }
 
 .clickable-item {
@@ -17,6 +21,10 @@ body {
 
 .font-raleway {
   font-family: "Raleway", sans-serif;
+}
+
+.fw-600 {
+  font-weight: 600;
 }
 
 .justify-self-center {
@@ -48,6 +56,8 @@ body {
 
 .product-img {
   height: 120px;
+  object-fit: cover;
+  object-position: center 38%;
 }
 
 .cart-card .card-body {

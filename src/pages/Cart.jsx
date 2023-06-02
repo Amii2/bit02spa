@@ -1,16 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import { AppContext } from "../assets/utils/AppContext";
 import { CartContext } from "../assets/utils/CartContext";
 import ProductCard from "../components/ProductCard";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 import colombianPesoFormat from "../assets/utils/colombianPesoFormat";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Cart() {
   const { cartItems, getTotalPrice, clearCart } = useContext(CartContext);
-  const { addAppContext, getAppContext } = useContext(AppContext);
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => {
@@ -41,18 +39,18 @@ export default function Cart() {
     );
   });
 
-  const showAlert = getAppContext("showAlert");
-
   return (
     <>
-      <h1 className="text-center mt-2">Carrito</h1>
+      <h1 className="text-center mt-2" id="cart">
+        Carrito
+      </h1>
       <Row className="w-100 my-0 cart justify-content-center gap-3 card-container">
         <p className="text-center mb-0">
           {cartItemElements.length > 0
-            ? `Productos: ${
-                cartItemElements.length
-              } Total: ${colombianPesoFormat(getTotalPrice())}`
-            : "Agrega productos a tu carrito para poder verlos aquí... 🐾"}
+            ? `Productos: ${cartItems.length} Total: ${colombianPesoFormat(
+                getTotalPrice()
+              )}`
+            : "Agrega productos a tu carrito para verlos aquí... 🐾"}
         </p>
         {cartItemElements.length > 0 && cartItemElements}
       </Row>
@@ -79,7 +77,7 @@ export default function Cart() {
           </h2>
           <p className="mx-10">
             Tu compra ha sido realizada con éxito, en breve recibirás un correo
-            con la información de tu compra.
+            con la información de tu pedido.
           </p>
           <Image
             src="images/dancing-dog.gif"

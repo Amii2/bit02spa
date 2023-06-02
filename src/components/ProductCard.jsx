@@ -46,11 +46,7 @@ export default function ProductCard({ product, variant, index, count }) {
       }
     >
       <Card className="w-100 h-100">
-        <Card.Img
-          src="images/placeholder.jpeg"
-          className="product-img"
-          height="25%"
-        />
+        <Card.Img src={product.image} className="product-img" height="25%" />
         <Card.Body className="py-2">
           <Card.Title className="font-raleway fw-bold pcard-title">
             {product.name}
@@ -66,7 +62,7 @@ export default function ProductCard({ product, variant, index, count }) {
           )}
         </Card.Body>
         <Card.Footer>
-          <Card.Subtitle className="fw-bold text-center">
+          <Card.Subtitle className="fw-bold text-center mb-1">
             {variant === "catalog" && currencyFormatter.format(product.price)}
           </Card.Subtitle>
           {variant === "cart" && (
@@ -84,7 +80,10 @@ export default function ProductCard({ product, variant, index, count }) {
               </Button>
             </InputGroup>
           )}
-          <Button className="d-block mx-auto" onClick={handleButtonClick}>
+          <Button
+            className="font-raleway fw-semibold d-block mx-auto"
+            onClick={handleButtonClick}
+          >
             {variant === "catalog"
               ? "Agregar al carrito"
               : "Remover del carrito"}

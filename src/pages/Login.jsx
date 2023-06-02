@@ -19,7 +19,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   return (
-    <Card className="align-self-center justify-self-center my-auto login-card">
+    <Card
+      className="align-self-center justify-self-center my-auto login-card"
+      id="login"
+    >
       <Row className="flex-fill h-100">
         <Col className="d-none h-100 d-lg-inline" xs={6}>
           <Card.Img
