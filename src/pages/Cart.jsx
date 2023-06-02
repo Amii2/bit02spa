@@ -82,7 +82,7 @@ export default function Cart() {
             con la información de tu compra.
           </p>
           <Image
-            src="/public/images/dancing-dog.gif"
+            src="images/dancing-dog.gif"
             className="dancing-dog-img"
             rounded
           />
