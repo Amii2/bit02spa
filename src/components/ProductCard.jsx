@@ -46,15 +46,28 @@ export default function ProductCard({ product, variant, index, count }) {
       }
     >
       <Card className="w-100 h-100">
-        <Card.Img src="/src/assets/images/placeholder.jpeg" height="25%" />
-        <Card.Body>
-          <Card.Title className="font-raleway fw-bold">
+        <Card.Img
+          src="/public/images/placeholder.jpeg"
+          className="product-img"
+          height="25%"
+        />
+        <Card.Body className="py-2">
+          <Card.Title className="font-raleway fw-bold pcard-title">
             {product.name}
           </Card.Title>
-          <div className="d-flex gap-1">{tagBadges}</div>
-          <Card.Text>{product.desc}</Card.Text>
+          {variant === "catalog" && (
+            <div className="d-flex gap-1">{tagBadges}</div>
+          )}
+          {variant === "catalog" && <Card.Text> {product.desc}</Card.Text>}
+          {variant === "cart" && (
+            <Card.Text className="text-center h4 pt-2">
+              {currencyFormatter.format(product.price)}
+            </Card.Text>
+          )}
+        </Card.Body>
+        <Card.Footer>
           <Card.Subtitle className="fw-bold text-center">
-            {currencyFormatter.format(product.price)}
+            {variant === "catalog" && currencyFormatter.format(product.price)}
           </Card.Subtitle>
           {variant === "cart" && (
             <InputGroup className="quantity-selector mx-auto my-2">
@@ -76,7 +89,7 @@ export default function ProductCard({ product, variant, index, count }) {
               ? "Agregar al carrito"
               : "Remover del carrito"}
           </Button>
-        </Card.Body>
+        </Card.Footer>
       </Card>
     </Col>
   );

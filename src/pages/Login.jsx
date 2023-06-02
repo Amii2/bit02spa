@@ -23,7 +23,7 @@ export default function Login() {
       <Row className="flex-fill h-100">
         <Col className="d-none h-100 d-lg-inline" xs={6}>
           <Card.Img
-            src="/src/assets/images/login-card-image.jpg"
+            src="/public/images/login-card-image.jpg"
             alt="Perro con ropa y gafas, imagen de la carta login."
             height="100%"
             className="object-fit-cover login-card-image horizontal-flip rounded-0 rounded-end"

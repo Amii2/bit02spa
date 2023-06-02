@@ -35,6 +35,26 @@ body {
   z-index: 12;
 }
 
+.mx-10 {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.dancing-dog-img {
+  height: 240px;
+}
+
+/* Card */
+
+.product-img {
+  height: 120px;
+}
+
+.cart-card .card-body {
+  height: max-content !important;
+  flex: 1 1 0;
+}
+
 /* Home Page */
 
 .page-container:has(.card-container) {
@@ -50,7 +70,13 @@ body {
 .cart-card {
   flex: 0 0 auto;
   width: 250px;
-  height: 400px;
+  height: 336px;
+}
+
+.cart-card > .card > .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-container {
