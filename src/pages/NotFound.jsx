@@ -17,7 +17,7 @@ export default function NotFound() {
       <Button
         size="lg"
         className="font-raleway fw-600"
-        onClick={() => navigate("/bit02spa")}
+        onClick={() => navigate("/bit02spa/")}
       >
         Regresar a inicio
       </Button>
