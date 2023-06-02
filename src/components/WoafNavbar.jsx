@@ -15,12 +15,12 @@ export default function WoafNavbar() {
   const { cartItems } = useContext(CartContext);
 
   const navigate = (route) => {
-    if (location.pathname === "/bit02spa")
+    if (location.pathname === "/bit02spa/")
       localStorage.setItem("scrollPosition", window.scrollY);
 
     navigateFunction(route);
 
-    if (route === "/bit02spa") {
+    if (route === "/bit02spa/") {
       const scrollPosition = localStorage.getItem("scrollPosition");
       setTimeout(
         () => window.scrollTo({ top: scrollPosition, behavior: "instant" }),
@@ -37,7 +37,7 @@ export default function WoafNavbar() {
       className="d-flex justify-content-between px-5 sticky-top"
     >
       <NavbarBrand
-        onClick={() => navigate("/bit02spa")}
+        onClick={() => navigate("/bit02spa/")}
         className="clickable-item"
       >
         <h1 className="m-0 p-0 h3 font-raleway fw-bold">WOAF</h1>
@@ -52,7 +52,7 @@ export default function WoafNavbar() {
             Ingresar
           </Button>
           <NavLink
-            onClick={() => navigate("/bit02spa")}
+            onClick={() => navigate("/bit02spa/")}
             className="font-raleway"
           >
             Inicio
