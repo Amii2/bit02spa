@@ -47,7 +47,7 @@ export default function ProductCard({ product, variant, index, count }) {
     >
       <Card className="w-100 h-100">
         <Card.Img
-          src="/public/images/placeholder.jpeg"
+          src="images/placeholder.jpeg"
           className="product-img"
           height="25%"
         />
