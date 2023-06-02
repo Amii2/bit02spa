@@ -9,7 +9,11 @@ export default function NotFound() {
     <div className="text-center mt-5">
       <h2 className="font-raleway fw-bold">Mmm que extraño...</h2>
       <h5>Parece que no hay nada por aqui.</h5>
-      <Image src="images/dog-searching.gif" className="d-block my-3" rounded />
+      <Image
+        src="/bit02spa/images/dog-searching.gif"
+        className="d-block my-3"
+        rounded
+      />
       <Button
         size="lg"
         className="font-raleway fw-600"
