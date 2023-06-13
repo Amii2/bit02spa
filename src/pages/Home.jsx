@@ -17,6 +17,12 @@ export default function Home() {
       id="home"
     >
       <h2 className="font-raleway text-center fw-600">¡Bienvenid@ a Woaf!</h2>
+      {//Woaf page description
+      }
+      <p className="font-raleway text-center">
+        Woaf es una tienda online de productos para mascotas. Aquí podrás
+        encontrar todo lo que necesitas para tu mejor amigo.
+      </p>
       {productElements}
     </Row>
   );
